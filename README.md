@@ -1,70 +1,26 @@
-# Getting Started with Create React App
+1.cnpm i create-react-app -g
+2.create-react-app myReact
+3.cd my-react 
+//用于弹出配置,这里有坑,不要做弹出操作,
+//会导致set DISABLE_NEW_JSX_TRANSFORM=true 不成功在script里
+//用于禁用新的jsx 转化规则
+4.yarn enject
+5.npm run eject
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+6.删除所有无关文件 仅留入口文件 
+  6.1. public 的html
+  6.2. src  的index 
 
-## Available Scripts
+7.我的react版本是17.0.2 
+  7.1. 17以后的jsx编译不再生成React.createElement 
+  7.2.  而是在babel编译阶段 会自动import {jsx} from “react/jsx-runtime” 然后jsx(),使用方法同createElement,来转化 jsx了 ,目的可能是为了解耦 然后可以不用import React from "react";
+  7.3. 所以要去script里将jsx() 禁用 因为要自己实现 createElement方法
 
-In the project directory, you can run:
+8.console 出来我们需要的dom对象 复制,删除多余属性等待使用 
+9.src下新建react.js 和react-dom.js
+10.createElement函数里
+  10.1
 
-### `yarn start`
+11.render函数里
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+12.浏览器查看 元素是否被append到目标容器中,此时还没写属性的操作

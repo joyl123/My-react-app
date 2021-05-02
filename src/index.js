@@ -1,17 +1,36 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "./react";
+import ReactDOM from "./react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+let currentElement = (
+  <div className="title" style={{ color: "red" }}>
+    <span>hello</span>world
+  </div>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+console.log({currentElement})
+// JSON.stringify,第二参数是要替换的function,第三参数,缩进的空格数,具体查mdn
+console.log(JSON.stringify(currentElement,null,2))
+ReactDOM.render(
+  currentElement,
+  document.getElementById("root")
+);
+/**
+ * {
+  "type": "div",
+  "props": {
+    "className": "title",
+    "style": {
+      "color": "red"
+    },
+    "children": [
+      {
+        "type": "span",
+        "props": {
+          "children": "hello"
+        },
+      },
+      "world"
+    ]
+  },
+}
+ * 
+*/
